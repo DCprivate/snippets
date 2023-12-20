@@ -21,10 +21,6 @@ void pass_by_ref(int &a[]) {
 }
 */
 
-
-
-
-
 int main() {
     string s = "Testing this cstring";
 
