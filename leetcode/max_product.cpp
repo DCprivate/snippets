@@ -3,7 +3,7 @@
 #include <algorithm>
 using namespace std;
 
-// O(n) by iterating through, keeping the biggest next biggest
+// O(n) by iterating through once, keeping the biggest next biggest
 int maxProduct(vector<int>& nums) {
     int biggest = 0;
     int secondBiggest = 0;
@@ -11,7 +11,8 @@ int maxProduct(vector<int>& nums) {
         if (num > biggest) {
             secondBiggest = biggest;
             biggest = num;
-        } else {
+        } 
+        else {
             secondBiggest = max(secondBiggest, num);
         }
     }
@@ -27,10 +28,6 @@ int _maxProduct(vector<int>& nums) {
 }
 
 int main() {
-    vector<int> v;
-    v.push_back(1);
-    v.push_back(5);
-    v.push_back(4);
-    v.push_back(5);
+    vector<int> v = {1, 5, 4, 5};
     cout << maxProduct(v) << endl;
 }

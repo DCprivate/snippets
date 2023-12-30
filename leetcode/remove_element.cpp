@@ -17,7 +17,7 @@ elements of nums are not important as well as the size of nums.
 Return k.
 */
 
-// weird solution that does some index shifting trickery
+// weird solution that does some index shifting trickery but doesn't actually remove element
 int _removeElement(vector<int>& nums, int val) {
     int n=nums.size();
     int indx=0;
