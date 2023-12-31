@@ -37,9 +37,6 @@ bool __containsDuplicate(vector<int>& nums) {
 // even faster...? best solution without count() overhead O(n)
 bool containsDuplicate(vector<int>& nums) {
     unordered_map<int, int> m;
-    //for (const auto& i : nums)
-    //    m[i]++; // increments value of i given the specific key
-
     for (int i = 0; i < nums.size(); ++i) {
         m[nums[i]]++;
         if (m[nums[i]] >= 2)
