@@ -1,0 +1,6 @@
+*.exe
+.pytest_cache
+.vscode
+__pycache__
+
+.codegpt
