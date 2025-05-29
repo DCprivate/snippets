@@ -1,22 +1,26 @@
 #include <iostream>
 #include <string>
 using namespace std;
+ 
+int str_str(string haystack, string needle) {
 
-/// @brief 
-/// @param haystack 
-/// @param needle 
-/// @return 
-bool str_str(string haystack, string needle) {
+    int needle_len = needle.length();
+    int haystack_len = haystack.length();
 
-    int str_len = needle.length();
-    char first_char = needle[0];
+    for (int i = 0; i < haystack_len - needle_len; i++) {
 
-    for (int i = 0; i < haystack.length(); i++) {
-        cout << haystack[i] << endl;
-        if (haystack[i] == first_char) {
-            cout << "here " << haystack[i] << " " << first_char << " " << needle << endl;
-            cout << "here: " << haystack.compare(i+1, str_len, needle) << endl;
+        for (int j = 0; j < needle_len; j++) {
+            cout << haystack[i+j] << " " << needle[j] << endl;
+            if (haystack[i+j] != needle[j]) {
+                cout << "not found" << endl;
+                break;
+            }
+            else {
+                cout << "found" << endl;
+            }
+            cout << i << " " << j << endl;
         }
+        
     }
 }
 
