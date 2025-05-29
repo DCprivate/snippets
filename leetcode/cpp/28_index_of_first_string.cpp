@@ -1,30 +1,49 @@
 #include <iostream>
 #include <string>
 using namespace std;
- 
+
+/// @brief Brute force sliding window solution 
+/// O(n*m)
+/// @return Index of first poisition found within superstring if found else -1 if substring not found
 int str_str(string haystack, string needle) {
 
     int needle_len = needle.length();
     int haystack_len = haystack.length();
 
-    for (int i = 0; i < haystack_len - needle_len; i++) {
-
-        for (int j = 0; j < needle_len; j++) {
-            cout << haystack[i+j] << " " << needle[j] << endl;
+    for (int i = 0; i <= haystack_len - needle_len; i++) {
+        int j = 0;
+        while (j < needle_len) {
             if (haystack[i+j] != needle[j]) {
-                cout << "not found" << endl;
                 break;
             }
-            else {
-                cout << "found" << endl;
-            }
-            cout << i << " " << j << endl;
+            j++;
         }
+
+        if (j == needle_len)
+            return i;
         
     }
+    return -1;
+}
+
+/// @brief KMP improves brute-force by avoiding unnecessary re-checks of characters.
+/// It does this by preprocessing the pattern to build a Longest Prefix Suffix (LPS) table.
+/// O(n+m)
+/// @return Index of first poisition found within superstring if found else -1 if substring not found
+int KMP_str_str(string haystack, string needle) {
+
+}
+
+/// @brief Instead of checking from left to right, Boyer-Moore compares the pattern from right to left.
+/// If a mismatch is found, it shifts the pattern right by skipping as many characters as it can, 
+/// based on the mismatched character.
+/// O(n)
+/// @return Index of first poisition found within superstring if found else -1 if substring not found
+int BM_str_str(string haystack, string needle) {
+
 }
 
 int main() {
-    bool result = str_str("happenstance", "sta");
+    int result = str_str("happenstance", "stance");
     cout << "Result: " << result << endl;
 }
