@@ -1,5 +1,9 @@
 #include <iostream>
 #include <string>
+
+#include <vector>
+#include <unordered_map>
+
 using namespace std;
 
 /// @brief Brute force sliding window solution 
@@ -26,11 +30,21 @@ int str_str(string haystack, string needle) {
     return -1;
 }
 
+vector<int> build_lsp(const string& pattern) {
+    
+}
+
 /// @brief KMP improves brute-force by avoiding unnecessary re-checks of characters.
 /// It does this by preprocessing the pattern to build a Longest Prefix Suffix (LPS) table.
 /// O(n+m)
 /// @return Index of first poisition found within superstring if found else -1 if substring not found
-int KMP_str_str(string haystack, string needle) {
+int kmp_search(const string& text, const string& pattern) {
+    int n = text.size();
+    int m = pattern.size();
+
+    // exit early if conditions
+    if (m == 0) return 0;
+    if (m > n) return -1;
 
 }
 
@@ -39,7 +53,7 @@ int KMP_str_str(string haystack, string needle) {
 /// based on the mismatched character.
 /// O(n)
 /// @return Index of first poisition found within superstring if found else -1 if substring not found
-int BM_str_str(string haystack, string needle) {
+int boyer_moore_search(const string& stack, const string& needle) {
 
 }
 
