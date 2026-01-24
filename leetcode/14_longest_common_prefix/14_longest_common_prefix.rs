@@ -25,8 +25,29 @@ Constraints:
 
 pub fn longest_common_prefix(strs: Vec<String>) -> String {
 
+    let out = String::new();
+    let mut i = 0;
+
+
+    for s in strs {
+        println!("{}", s);
+
+        /*for c in s.chars() {
+            println!("{}", c);
+            if 
+        }*/
+
+        println!("{}", s.as_bytes()[i]);
+        i += 1;
+    }
+
+    out
 }
 
 fn main() {
+
+    let v = vec!["flower".to_string(), "flow".to_string(), "flight".to_string()];
+
+    println!("{}", longest_common_prefix(v));
 
 }
