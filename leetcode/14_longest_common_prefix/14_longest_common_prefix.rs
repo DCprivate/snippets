@@ -25,29 +25,42 @@ Constraints:
 
 pub fn longest_common_prefix(strs: Vec<String>) -> String {
 
-    let out = String::new();
+    let mut out = String::new();
     let mut i = 0;
 
-
-    for s in strs {
-        println!("{}", s);
-
-        /*for c in s.chars() {
-            println!("{}", c);
-            if 
-        }*/
-
-        println!("{}", s.as_bytes()[i]);
-        i += 1;
+    if strs[0].len() as i32 == 0 {
+        println!("Empty string");
+        return out;
     }
 
-    out
+    let mut temp = &strs[0].as_bytes()[0];
+    println!("{}", temp);
+
+    loop {
+        for s in &strs {
+            println!("{} : {}", s, s.as_bytes()[i]);
+
+            if s.as_bytes()[i] == *temp {
+                //out.push(s.as_bytes()[i] as char);
+                continue;
+            }
+            else {
+                println!("found mismatch");
+                return out;
+            }     
+            
+        }
+        i += 1;
+        out.push(*temp as char);
+        temp = &strs[0].as_bytes()[i];
+
+    }
 }
 
 fn main() {
 
     let v = vec!["flower".to_string(), "flow".to_string(), "flight".to_string()];
-
-    println!("{}", longest_common_prefix(v));
-
+    let v2 = vec!["".to_string()];
+    println!("\n{}", longest_common_prefix(v));
+    println!("{}", longest_common_prefix(v2));
 }
