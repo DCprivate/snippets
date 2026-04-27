@@ -9,11 +9,12 @@ You must write an algorithm with O(log n) runtime complexity.
 pub fn search_insert(nums: Vec<i32>, target: i32) -> i32 {
     
     // Possible bisecting solution
-    let mut mid = target as usize;
-    let max = nums.len();
+    let mut min = 0;
+    let mut max = nums.len();
 
-    while mid < max {
-        
+    while min < max {
+        let mut mid = (max + min) / 2;
+
     }
 
 
@@ -24,7 +25,7 @@ pub fn search_insert(nums: Vec<i32>, target: i32) -> i32 {
         }
     }*/
 
-    index as i32
+    min as i32
 }
 
 fn main() {
