@@ -33,14 +33,9 @@ Constraints:
 
 pub fn length_of_last_word(s: String) -> i32 {
 
-    let mut index = 0;
     let words: Vec<_> = s.split(' ').collect();
 
-    println!("{:?}", words);
-
     for i in (0..words.len()).rev() {
-        println!("here");
-        println!("{:?}", &words[i]);
         if words[i] == "" {
             continue;
         }
