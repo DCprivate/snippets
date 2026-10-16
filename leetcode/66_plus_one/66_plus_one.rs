@@ -59,7 +59,7 @@ fn main() {
     let d3 = vec![9];
 
     println!("{:?}", plus_one(d)); // output: [1,2,3]
-    println!("{:?}", plus_one(d2)); // output: [4,3,2,2]
+    //println!("{:?}", plus_one(d2)); // output: [4,3,2,2]
     //println!("{:?}", plus_one(d3)); // output: [1,0]
 
 }
