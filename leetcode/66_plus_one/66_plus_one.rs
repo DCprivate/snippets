@@ -75,5 +75,5 @@ fn main() {
     println!("{:?}\n", plus_one(d)); // output: [1,2,3]
     println!("{:?}\n", plus_one(d2)); // output: [4,3,2,2]
     println!("{:?}\n", plus_one(d3)); // output: [1,0]
-    println!("{:?}\n", plus_one(d4)); // output: []
+    println!("{:?}\n", plus_one(d4)); // output: [1,0,0,0]
 }
