@@ -40,14 +40,27 @@ Constraints:
 */
 
 
-fn plus_one(digits: Vec<i32>) -> Vec<i32> {
+fn plus_one(mut digits: Vec<i32>) -> Vec<i32> {
 
     let len = digits.len();
+    //let mut digits = digits;
 
-    let digits[len - 1] = digits[len - 1] - 1;
-    println!("{:?}", digits);
-    //let temp = digits[len - 1] + 1;
-    //println!("{}", temp);
+    for i in (0..len).rev() {
+        println!("{}", digits[i]);
+
+        if digits[i] == 9 {
+            digits[i] = 0;
+        }
+        else {
+            digits[i] += 1;
+            break;
+        }
+
+    }
+
+    if digits[0] == 0 {
+        digits.insert(0, 1);
+    }
 
     digits
 }
@@ -57,9 +70,10 @@ fn main() {
     let d = vec![1,2,3];
     let d2 = vec![4,3,2,1];
     let d3 = vec![9];
+    let d4 = vec![9,9,9];
 
-    println!("{:?}", plus_one(d)); // output: [1,2,3]
-    println!("{:?}", plus_one(d2)); // output: [4,3,2,2]
-    //println!("{:?}", plus_one(d3)); // output: [1,0]
-
+    println!("{:?}\n", plus_one(d)); // output: [1,2,3]
+    println!("{:?}\n", plus_one(d2)); // output: [4,3,2,2]
+    println!("{:?}\n", plus_one(d3)); // output: [1,0]
+    println!("{:?}\n", plus_one(d4)); // output: []
 }
