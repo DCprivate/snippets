@@ -33,8 +33,42 @@ fn add_binary(a: String, b: String) -> String {
     //let a_as_int = u32::from_str_radix(&a, 2).unwrap();
     //let b_as_int = u32::from_str_radix(&b, 2).unwrap();
     //format!("{:b}", a_as_int + b_as_int)
-    
-    
+
+    let mut len = a.len();
+    if len < b.len() {
+        len = b.len();
+    }
+
+    /*for i in (0..len).rev() {
+        println!("{:?} {:?}", a.as_bytes()[i], b.as_bytes()[i]);
+        if a.as_bytes()[i] == 1 as u8 && b.as_bytes()[i] == 1 as u8 {
+            println!("match for i = {}", i);
+        }
+        
+
+    }*/
+
+    let output = String::new();
+
+    for a_byte in a.as_bytes() {
+        for b_byte in b.as_bytes() {
+            //println!("{:?} : {:?}", a_byte, b_byte);
+
+            if a_byte == b_byte {
+                println!("match");
+                s += 0;
+                break;
+            }
+
+
+            break;
+        }
+
+    }
+
+
+
+
     
     "Failed\n".to_string()
 }
@@ -49,8 +83,8 @@ fn main() {
     let b1 = String::from("1010");
     let b2 = String::from("1011");
 
-    println!("{}", add_binary(a1, a2));
-    println!("{}", add_binary(b1, b2));
+    //println!("{}", add_binary(a1, a2)); // output: 1000
+    println!("{}", add_binary(b1, b2)); // output: 11111
 
 
 }
