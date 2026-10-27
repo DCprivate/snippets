@@ -30,16 +30,13 @@ Constraints:
 
 fn add_binary(a: String, b: String) -> String {
 
-    let a_bin = a.parse::<u8>().unwrap();
-    let b_bin = b.parse::<u8>().unwrap();
-
-    let temp = a_bin & b_bin;
-
-    println!("{}", a_bin);
-    println!("{}", b_bin);
-    println!("{}", temp);
-
-    "asdf\n".to_string()
+    //let a_as_int = u32::from_str_radix(&a, 2).unwrap();
+    //let b_as_int = u32::from_str_radix(&b, 2).unwrap();
+    //format!("{:b}", a_as_int + b_as_int)
+    
+    
+    
+    "Failed\n".to_string()
 }
 
 
@@ -53,10 +50,7 @@ fn main() {
     let b2 = String::from("1011");
 
     println!("{}", add_binary(a1, a2));
-    //println!("{}", add_binary(b1, b2));
-    
+    println!("{}", add_binary(b1, b2));
 
 
 }
-
-//println!("{}", std::any::type_name_of_val(&a_bin));
