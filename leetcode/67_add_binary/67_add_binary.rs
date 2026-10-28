@@ -48,29 +48,61 @@ fn add_binary(a: String, b: String) -> String {
 
     }*/
 
-    let output = String::new();
+    let mut output = String::new();
+    let mut carry = 0;
 
-    for a_byte in a.as_bytes() {
-        for b_byte in b.as_bytes() {
-            //println!("{:?} : {:?}", a_byte, b_byte);
+    for (a_byte, b_byte) in a.as_bytes().into_iter().zip(b.as_bytes()) {
 
-            if a_byte == b_byte {
-                println!("match");
-                s += 0;
-                break;
+        println!("\n{:?} : {:?}", a_byte, b_byte);
+
+        if *a_byte == b'1' && *b_byte == b'1' { // if both 1
+            if carry == 1 { // if carry bit set
+                println!("both 1 with carry set");
+                output.insert(0, '1');
+                carry = 1;
+
             }
+            else { // if carry bit not set
+                println!("both 1 with carry not set");
+                output.insert(0, '0');
+                carry = 1;
 
-
-            break;
+            }
         }
+        else if *a_byte == b'0' && *b_byte == b'0' { // if both 0
+            if carry == 1 { // if carry bit set
+                println!("both 0 with carry set");
+                output.insert(0, '1');
+                carry = 0;
 
+            }
+            else { // if carry bit not set
+                println!("both 0 with not carry set");
+                output.insert(0, '0');
+                carry = 0;
+            }
+        }
+        else { // if either is 1
+            if carry == 1 { // if carry bit set
+                println!("either 0 or 1 with carry set");
+                output.insert(0, '0');
+                carry = 0;
+
+            }
+            else { // if carry bit not set
+                println!("either 0 or 1 with not carry set");
+                output.insert(0, '1');
+                carry = 0;
+
+            }   
+        }
     }
 
+    if output.as_bytes()[0] == b'0' {
+        output.insert(0, '1');
+    }
 
-
-
-    
-    "Failed\n".to_string()
+    output
 }
 
 
@@ -83,8 +115,8 @@ fn main() {
     let b1 = String::from("1010");
     let b2 = String::from("1011");
 
-    //println!("{}", add_binary(a1, a2)); // output: 1000
-    println!("{}", add_binary(b1, b2)); // output: 11111
+    println!("{}", add_binary(a1, a2)); // output: 100
+    println!("{}", add_binary(b1, b2)); // output: 10101
 
 
 }
