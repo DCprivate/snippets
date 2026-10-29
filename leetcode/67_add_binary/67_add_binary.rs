@@ -28,32 +28,31 @@ Constraints:
 
 
 
-fn add_binary(a: String, b: String) -> String {
+fn add_binary(mut a: String, mut b: String) -> String {
 
     //let a_as_int = u32::from_str_radix(&a, 2).unwrap();
     //let b_as_int = u32::from_str_radix(&b, 2).unwrap();
     //format!("{:b}", a_as_int + b_as_int)
-
-    let mut len = a.len();
-    if len < b.len() {
-        len = b.len();
+    if a == "0" && b == "0" {
+        return "0".to_string();
     }
 
-    /*for i in (0..len).rev() {
-        println!("{:?} {:?}", a.as_bytes()[i], b.as_bytes()[i]);
-        if a.as_bytes()[i] == 1 as u8 && b.as_bytes()[i] == 1 as u8 {
-            println!("match for i = {}", i);
-        }
-        
+    if a.len() < b.len() {
+        a.insert_str(0, &"0".repeat(b.len() - a.len()));
+    }
+    else {
+        b.insert_str(0, &"0".repeat(a.len() - b.len()));
+    }
 
-    }*/
+    println!("{} {}", a, b);
+
 
     let mut output = String::new();
     let mut carry = 0;
 
-    for (a_byte, b_byte) in a.as_bytes().into_iter().zip(b.as_bytes()) {
+    for (a_byte, b_byte) in a.as_bytes().into_iter().zip(b.as_bytes()).rev() {
 
-        println!("\n{:?} : {:?}", a_byte, b_byte);
+        println!("\n{} : {}", *a_byte - b'0', *b_byte - b'0');
 
         if *a_byte == b'1' && *b_byte == b'1' { // if both 1
             if carry == 1 { // if carry bit set
@@ -66,7 +65,6 @@ fn add_binary(a: String, b: String) -> String {
                 println!("both 1 with carry not set");
                 output.insert(0, '0');
                 carry = 1;
-
             }
         }
         else if *a_byte == b'0' && *b_byte == b'0' { // if both 0
@@ -86,8 +84,7 @@ fn add_binary(a: String, b: String) -> String {
             if carry == 1 { // if carry bit set
                 println!("either 0 or 1 with carry set");
                 output.insert(0, '0');
-                carry = 0;
-
+                carry = 1;
             }
             else { // if carry bit not set
                 println!("either 0 or 1 with not carry set");
@@ -98,7 +95,7 @@ fn add_binary(a: String, b: String) -> String {
         }
     }
 
-    if output.as_bytes()[0] == b'0' {
+    if output.as_bytes()[0] == b'0' || carry == 1 {  // pad out the last carry bit if there is one
         output.insert(0, '1');
     }
 
@@ -115,8 +112,9 @@ fn main() {
     let b1 = String::from("1010");
     let b2 = String::from("1011");
 
-    println!("{}", add_binary(a1, a2)); // output: 100
-    println!("{}", add_binary(b1, b2)); // output: 10101
+    //println!("{}", add_binary(a1, a2)); // output: 100
+    //println!("{}", add_binary(b1, b2)); // output: 10101
+    println!("{}", add_binary("1".to_string(), "111".to_string()));
 
 
 }
