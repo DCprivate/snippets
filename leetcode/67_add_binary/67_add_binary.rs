@@ -90,7 +90,6 @@ fn add_binary(mut a: String, mut b: String) -> String {
                 println!("either 0 or 1 with not carry set");
                 output.insert(0, '1');
                 carry = 0;
-
             }   
         }
     }
