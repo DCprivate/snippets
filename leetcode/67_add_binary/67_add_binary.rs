@@ -106,6 +106,7 @@ fn add_binary(mut a: String, mut b: String) -> String {
 
 fn main() {
 
+    
     let a1 = String::from("11");
     let a2 = String::from("1");
     let b1 = String::from("1010");
